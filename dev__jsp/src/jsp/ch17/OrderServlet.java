@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,8 +21,12 @@ import com.sun.xml.internal.bind.v2.schemagen.xmlschema.List;
 @WebServlet(urlPatterns="/ch17/order.do")
 public class OrderServlet extends HttpServlet {
 	Logger logger = Logger.getLogger(OrderServlet.class);
-	
-	
+	ServletConfig config =null;
+	public void init(ServletConfig config)throws ServletException{
+		logger.info("init 호출 성공");
+		this.config=config;
+		this.init();
+	}
 	@Override
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException{
 	
@@ -44,6 +49,8 @@ public class OrderServlet extends HttpServlet {
 		logger.info("doPost 메소드 호출");
 		String mem_name = req.getParameter("mem_name");
 		logger.info("입력한 사람은? " + mem_name);
+		
+		
 	}
 	
 }
