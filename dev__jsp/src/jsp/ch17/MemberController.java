@@ -20,7 +20,7 @@ public class MemberController {
 		//회원탈퇴
 	}else if(1==1) {
 		
-		//회원 수정
+		//회원 수정 
 	}else if(1==1) {
 		
 	}
