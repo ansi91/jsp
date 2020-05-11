@@ -94,5 +94,17 @@
  		<url-pattern>*.kosmo</url-pattern>
  	</servlet-mapping>
 
+	<servlet>
+ 	<servlet-name>parameterServlet</servlet-name>
+ 	<servlet-class>jsp.ch03.ParameterServlet</servlet-class>
+ 	</servlet> 
+ 	<servlet-mapping>
+ 		<servlet-name>parameterServlet</servlet-name>
+ 		<url-pattern>/ch03/parameterAction.do</url-pattern>
+ 	</servlet-mapping>
+ 	<error-page>
+ 		<exception-type>java.lang.NullPointerException</exception-type>
+ 		<location>/error/errorNullPointer.jsp</location>
+ 	</error-page>
  
 </web-app>

@@ -26,7 +26,8 @@ public class MVCServlet extends HttpServlet {
 		String context = req.getContextPath(); // server.xml의 context path root
 		logger.info("uri :" + uri);
 		logger.info("context :" + context);
-		String command = uri.substring(context.length()+1);
+		System.out.println("context:"+context.length());
+		String command = uri.substring(context.length());
 		System.out.println(command.length() +" " + command);  
 		logger.info("command :" +command);
 		int end = command.lastIndexOf('.'); //order/orderList. 점 앞에 오는 숫자 갯수
