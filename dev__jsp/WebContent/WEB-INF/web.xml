@@ -59,6 +59,16 @@
  	<url-pattern>/ch13/hello.do</url-pattern>
  </servlet-mapping>
  
+ 
+  <servlet>
+ 	<servlet-name>deptMgr</servlet-name>
+ 	<servlet-class>jsp.dept.DeptController</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>deptMgr</servlet-name>
+ 	<url-pattern>/dept/deptList.do</url-pattern>
+ </servlet-mapping>
+ 
  <servlet>
  	<servlet-name>DBCPInit</servlet-name>
  	<servlet-class>jsp.ch17.DBCPInitVer2</servlet-class>
