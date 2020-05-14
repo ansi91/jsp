@@ -19,11 +19,7 @@ Logger logger = Logger.getLogger(DeptController.class);
 	public void doGet(HttpServletRequest req, HttpServletResponse res)throws IOException, ServletException {
 		ActionForward af = new ActionForward();
 		logger.info("DeptController 호출 성공");
-		res.setContentType("text/html; charset=UTF-8");
-		PrintWriter out = res.getWriter();
-		String dept= req.getParameter("deptno");
-		out.print(dept);
-		logger.info(dept);
+		 
 		DeptDao dDao = new DeptDao(); //jsonDeptList의 리턴값을 받기 위해 인스턴스화
 		List<Map<String,Object>> deptList =null; 
 		deptList = dDao.deptList(null);

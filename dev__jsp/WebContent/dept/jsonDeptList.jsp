@@ -12,7 +12,7 @@
 	dmap.put("deptno",deptno);
 	List<Map<String,Object>> deptList = dDao.deptList(dmap);
 	 */
-	List<Map<String,Object>> deptList = (List<Map<String,Object>>)request.getAttribute("deptList");
+	List<Map<String,Object>> deptList = (List<Map<String,Object>>)request.getAttribute("deptList"); //forward ->servlet 
 	Gson g = new Gson();
 	String imsi = g.toJson(deptList);
 	out.print(imsi); //json포맷
