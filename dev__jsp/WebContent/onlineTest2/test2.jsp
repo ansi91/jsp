@@ -1,5 +1,12 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    	String htest1 = request.getParameter("htest1");
+    	Cookie chtest1 = new Cookie ("chtest1",htest1);
+    	chtest1.setMaxAge(60*60);
+    	response.addCookie(chtest1);
+    %>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -35,7 +42,7 @@
 					temp= temp+1;
 				}
 			}
-			alert("temp:" + temp);
+	//		alert("temp:" + temp);
 			document.getElementById('f_test2').submit();
 			//$("#f_test1")
 		}
@@ -47,7 +54,6 @@
 </head>
 <body>
 <form id="f_test2" method="get" action="test3.jsp">
-<input type="hidden" name="htest1" value="<%=request.getParameter("htest1") %>"> 
 <input type="hidden" name="htest2">
 	문제2<br>
 	조회한 결과를 DB서버에서 가져온 후 결과를 List에 담았다. 이것을 화면단에 출력하고자 할 때 사용할 메소드 이름은 무엇인지 고르시오.<br>

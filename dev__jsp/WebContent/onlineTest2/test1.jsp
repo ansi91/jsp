@@ -5,6 +5,8 @@
    		Cookie c_hno = new Cookie("c_hno",h_no);
    		c_hno.setMaxAge(60*60);
    		response.addCookie(c_hno);
+   		
+   		
   %>  
   
 <!DOCTYPE html>
@@ -38,7 +40,7 @@
 					temp= temp+1;
 				}
 			}
-			alert("temp:" + temp);
+		//	alert("temp:" + temp);
 			document.getElementById('f_test1').submit();
 			//$("#f_test1")
 		}

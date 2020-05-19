@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	String htest1 = request.getParameter("htest1");
-    	String htest2 = request.getParameter("htest2");
-    	String htest3 = request.getParameter("htest3");
-    	
+	    String htest3 = request.getParameter("htest3");
+		Cookie chtest3 = new Cookie ("chtest3",htest3);
+		chtest3.setMaxAge(60*60);
+		response.addCookie(chtest3);
     %>
 <!DOCTYPE html>
 <html>
@@ -40,7 +40,7 @@
 					temp= temp+1;
 				}
 			}
-			alert("temp:" + temp);
+	//		alert("temp:" + temp);
 			document.getElementById('f_test4').submit();
 			//$("#f_test1")
 		}
@@ -52,9 +52,7 @@
 </head>
 <body>
 <form id="f_test4" method="get" action="send.jsp">
-<input type="hidden" name="htest1"  value="<%=htest1 %>">
-<input type="hidden" name="htest2"  value="<%=htest2 %>">
-<input type="hidden" name="htest3"  value="<%=htest3 %>">
+
 <input type="hidden" name="htest4"  >
 
 	문제4<br>

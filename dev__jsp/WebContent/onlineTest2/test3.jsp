@@ -1,9 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-    	String htest1 = request.getParameter("htest1");
-    	String htest2 = request.getParameter("htest2");
-    %>
+    
+		String htest2 = request.getParameter("htest2");
+		Cookie chtest2 = new Cookie ("chtest2",htest2);
+		chtest2.setMaxAge(60*60);
+		response.addCookie(chtest2);
+	%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -39,7 +43,7 @@
 					temp= temp+1;
 				}
 			}
-			alert("temp:" + temp);
+	//		alert("temp:" + temp);
 			document.getElementById('f_test3').submit();
 			//$("#f_test1")
 		}
@@ -51,8 +55,6 @@
 </head>
 <body>
 <form id="f_test3" method="get" action="test4.jsp">
-<input type="hidden" name="htest1"  value="<%=htest1 %>"> 
-<input type="hidden" name="htest2" value="<%=htest2 %>">
 <input type="hidden" name="htest3">
 
 	문제3<br>
