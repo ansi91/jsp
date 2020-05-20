@@ -5,6 +5,7 @@
    		Cookie c_hno = new Cookie("c_hno",h_no);
    		c_hno.setMaxAge(60*60);
    		response.addCookie(c_hno);
+   		out.print(h_no);
    		
    		
   %>  

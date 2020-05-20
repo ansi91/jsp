@@ -3,7 +3,7 @@
     <%
     
 		String htest2 = request.getParameter("htest2");
-		Cookie chtest2 = new Cookie ("chtest2",htest2);
+		Cookie chtest2 = new Cookie ("htest2",htest2);
 		chtest2.setMaxAge(60*60);
 		response.addCookie(chtest2);
 	%>

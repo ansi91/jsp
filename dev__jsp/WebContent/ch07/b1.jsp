@@ -11,7 +11,7 @@ b1<br>
 b2<br>
 b3<br>
 
-<% out.print("id="+id +"<br>");
+<% out.print("id="+ id +"<br>");
 	out.print(1+2 +"<br>");
 %>
 

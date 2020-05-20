@@ -15,7 +15,7 @@
 	out.print("<br>");
 	out.print(h_no+","+h_name);//null, null
 %>
-<form method="get" action="account2.jsp">
+<form method="get" action="account.jsp">
 <input type="hidden" name="htest1"  value="<%=htest1 %>"> 
 <input type="hidden" name="htest2" value="<%=htest2 %>">
 <input type="hidden" name="htest3" value="<%=htest3 %>">

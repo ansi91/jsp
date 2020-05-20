@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
     <%
     	String htest1 = request.getParameter("htest1");
-    	Cookie chtest1 = new Cookie ("chtest1",htest1);
+    	Cookie chtest1 = new Cookie ("htest1",htest1);
     	chtest1.setMaxAge(60*60);
     	response.addCookie(chtest1);
     %>
