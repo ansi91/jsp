@@ -1,14 +1,21 @@
-/*
- * package restaurant;
- * 
- * import static org.junit.jupiter.api.Assertions.*;
- * 
- * import org.junit.jupiter.api.Test;
- * 
- * class RestaurantDaoTest {
- * 
- * @Test void testProcRestList() { RestaurantDao rDao = new RestaurantDao();
- * assertEquals(6, rDao.procRestList().size()); }
- * 
- * }
- */
+
+ package restaurant;
+ 
+ import static org.junit.jupiter.api.Assertions.*;
+
+import java.util.List;
+import java.util.Map;
+
+import org.junit.jupiter.api.Test;
+ 
+ class RestaurantDaoTest {
+ 
+	 RestaurantDao rdao = new RestaurantDao();
+		List<Map<String,Object>> rList = rdao.procRestList();
+		@Test
+		void testProcRestList() {
+			//assertEquals(3,rdao.procRestList().size());
+			assertNotSame(rList, rdao.procRestList());
+		}
+
+	}
