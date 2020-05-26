@@ -27,8 +27,8 @@ public class FrontMVC2 extends HttpServlet {
 		
 		String crud = null;
 		try {
-			controller = ControllerMapper.getController(command, crud);
 			crud = req.getParameter("crud");
+			controller = ControllerMapper.getController(command, crud);
 			logger.info("crud ="+ crud);
 		} catch (Exception e) {
 			System.out.println(e.toString());
@@ -37,7 +37,7 @@ public class FrontMVC2 extends HttpServlet {
 			logger.info("MemberController 타입이면 회원관리 업무임...");
 			String path = controller.process(req, res);
 			String pageMove[] = null;
-			pageMove = path.split(":");
+			pageMove = path.split(":"); //pageMove[] : MemberController의 process 메소드의 return값을 담는다 0번방 forward or sendRedirection | 1번방 memberList.jsp
 			for (String str : pageMove) {
 				System.out.println("str= " + str);
 			}

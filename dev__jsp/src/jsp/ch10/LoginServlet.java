@@ -22,7 +22,7 @@ public class LoginServlet extends HttpServlet {
 		String mem_pw = req.getParameter("mem_pw");
 		RestaurantDao rdao = new RestaurantDao();
 		String msg = null;
-		msg = rdao.login(mem_id, mem_pw);
+		msg = rdao.login(mem_id, mem_pw); 
 		session.setAttribute("s_name", msg);
 		logger.info("doGet 메소드 호출 성공");
 	//	res.sendRedirect("mapDesign3.jsp");
