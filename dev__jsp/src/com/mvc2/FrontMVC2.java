@@ -10,9 +10,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import chap08.Controller;
-import chap08.MemberController;
-
 public class FrontMVC2 extends HttpServlet {
 	Logger logger = Logger.getLogger(FrontMVC2.class);
 	
@@ -20,7 +17,9 @@ public class FrontMVC2 extends HttpServlet {
 		logger.info("doService 호출 성공");
 	
 		String requestURI = req.getRequestURI();	//==> dev_jsp/member/memberList.mvc2
-		String contextPath = req.getContextPath(); // ==> /dev_jsp/ ==> /dev_jsp
+		System.out.println("ru" + requestURI);
+		String contextPath = req.getContextPath(); // ==> / ==> /dev_jsp
+	
 		String command = requestURI.substring(contextPath.length()+1); //   /member/member.mvc2 | /order/order.mvc2  | /price/price.mvc2
 		Controller controller = null;
 		logger.info("command= " + command);

@@ -2,9 +2,6 @@ package com.mvc2;
 
 import org.apache.log4j.Logger;
 
-import chap08.Controller;
-import chap08.MemberController;
-
 public class ControllerMapper {
 
 	public static Controller getController(String command, String crud) {
