@@ -1,13 +1,13 @@
-package com.mvc2;
+package com.mvc3;
 
 import java.util.List;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
 
-public class MemberLogic {
-	Logger logger = Logger.getLogger(MemberLogic.class);
-	MemberDao mDao = new MemberDao();
+public class MemberLogic3 {
+	Logger logger = Logger.getLogger(MemberLogic3.class);
+	MemberDao3 mDao = new MemberDao3();
 	public String login(Map<String,Object >pmap) {
 		String s_name = mDao.login(pmap);
 		return s_name;

@@ -24,6 +24,7 @@
     <script type="text/javascript" src="https://code.jquery.com/jquery-1.9.1.min.js"></script>
     <script type="text/javascript" src="https://www.jeasyui.com/easyui/jquery.easyui.min.js"></script>
 	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-cookie/1.4.1/jquery.cookie.min.js"></script>
+	<script type="text/javascript" src="/js/commons.js"></script>
 	<script type="text/javascript"> 
 	
 	//쿠키 정보를 담을 전역변수 선언하기
@@ -40,14 +41,30 @@
 		function memberList() {
 			alert("회원정보 출력");
 		
-			$('#dialog_member').dialog({
-				closed:false
-				,title:"회원 목록"
-				,width:500
-				,height:500
-				,modal:true	
+			$('#dl_memList').dialog({
+			    title: '회원 관리',
+			    width: 400,
+			    height: 200,
+			    closed: false,
+			   cache: false,
+			    href:'./memberList.jsp',
+			    modal: true
 				});
 			}
+		
+		function fun(){
+			alert("mapDesign3.jsp fun호출");
+			$('#dl_memList').dialog({
+				title:'회원관리'
+			    ,width: 400
+			    ,height: 200
+			    ,closed: false
+			    ,cache: false
+			    ,href: './member.mvc2?crud=memberList'
+			    ,modal: true
+			});
+		}		
+		
 		
 		
 		
@@ -180,7 +197,7 @@
                     <li>
                         <span>회원관리</span>
                         <ul>
-                            <li><span>회원가입</span></li>
+                            <li><span><a href="javascript:memberList()">회원가입</a></span></li>
                             <li><span>회원수정</span></li>
                             <li><span>회원탈퇴</span></li>
                             <li><span ><a href="javascript:memberList()" >회원 목록</a></span></li>
@@ -264,22 +281,17 @@
 	</script>
 	<!--#################메인페이지 끝 ################## -->
 	<!--#################회원관리 dialog창 시작 #############-->
-			<div id="dl_memList">Dialog Contents</div>	
+			<div id="dl_memList">Dialog Contents</div>
+		
 	<!--#################회원관리 dialog창 끝 #############-->
-	<script type="text/javascript">
-		$('#dl_memList').dialog({
-		    title: '회원 목록',
-		    width: 400,
-		    height: 200,
-		    closed: false,
-		    cache: false,
-		    href: './memberList.jsp',
-		    modal: true
-		});
-	</script>
+	
 </body>
 </html>
-
+<!--
+														O
+location.href와 res.sendRedirect는 동급이다 | 아니다.
+결과도 같고 전송 방식도 get방식이다.                     
+  -->
 
 
 

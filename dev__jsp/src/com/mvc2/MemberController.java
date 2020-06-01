@@ -18,33 +18,48 @@ public class MemberController implements Controller {
 	MemberLogic memLogic = null;
 	public MemberController(String crud) {
 		this.crud = crud;
-		 memLogic = new MemberLogic();
+		memLogic = new MemberLogic();
 	}
 	
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException {
-		logger.info("process 호출 성공, crud=" + crud);
-		if ("login".equals(crud)) {
+		logger.info("process 호출 성공, crud:"+crud);
+		String path = "";
+		if("login".equals(crud)){
 			String u_id = req.getParameter("mem_id");
 			String u_pw = req.getParameter("mem_pw");
-			Map<String,Object> rmap = new HashMap<>();
-			rmap.put("mem_id", u_id);
-			String s_name = memLogic.login(rmap);
+			Map<String,Object> pMap = new HashMap<>();
+			pMap.put("mem_id",u_id);
+			String s_name = memLogic.login(pMap);
 			HttpSession session = req.getSession();
 			session.setAttribute("s_name", s_name);
-			return "forward:mapDesign4.jsp";
-			
-		}else if ("memberList".equals(crud)) {
+			return "forward:mapDesign3.jsp";
+		}
+		else if("memberList".equals(crud)) {
 			List<Map<String,Object>> memList = null;
-			Map<String,Object> rmap = new HashMap<>();
-			memList = memLogic.memberList(rmap);
+			Map<String,Object> pMap = new HashMap<>();
+			memList = memLogic.memberList(pMap);
 			if(memList==null) {
-				memList = new ArrayList<>(); //memList.size() ==0;
-				req.setAttribute("memList", memList);
+				memList = new ArrayList<>();//memList.size()=0
 			}
 			
+			
+			req.setAttribute("memList", memList);
+			path = "forward:/member/memberList.jsp";
 		}
-		return "forward:memberList.jsp"; 
+		
+		else if("memberList".equals(crud)) {
+			int result=0;
+			Map<String,Object>pmap = new HashMap<>();
+			pmap.put("mem_id", req.getParameter("mem_id"));
+			pmap.put("mem_name", req.getParameter("mem_name"));
+			pmap.put("mem_pw", req.getParameter("mem_pw"));
+			//pmap.put("mem_zipcode", req.getParameter("mem_zipcode"));
+			//pmap.put("mem_addr", req.getParameter("mem_addr"));
+			result = memLogic.memberAdd(pmap);
+			path="redirect:/member/member.mvc2?crud=memberList";
+		}
+		return path;
 	}
 
 }

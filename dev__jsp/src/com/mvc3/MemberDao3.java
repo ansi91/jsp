@@ -1,4 +1,4 @@
-package com.mvc2;
+package com.mvc3;
 
 import java.io.Reader;
 import java.util.ArrayList;
@@ -11,12 +11,12 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.log4j.Logger;
 
-public class MemberDao {
-	Logger logger = Logger.getLogger(MemberDao.class);
+public class MemberDao3 {
+	Logger logger = Logger.getLogger(MemberDao3.class);
 	String resource = "orm/mybatis/Configuration.xml";
 	SqlSessionFactory sqlMapper = null;
 	
-	public MemberDao() {
+	public MemberDao3() {
 		sqlMapper =  MyBatisCommonFactory.getSqlSessionFactory();
 		
 		}

@@ -6,10 +6,11 @@ public class ControllerMapper {
 
 	public static Controller getController(String command, String crud) {
 		Logger logger = Logger.getLogger(ControllerMapper.class);
+		logger.info("command:"+command +", crud: "+crud);
 		Controller controller = null;
 		String commands[] = command.split("/");
 		
-		int i = 0;
+	
 		for(String str : commands) {
 			System.out.println("str=" + str);
 		}

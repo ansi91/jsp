@@ -20,8 +20,13 @@
 			</where>
 		</select>
 		
-		<select id="memList" parameterType="map" resultType="map">
-			select mem_id, mem_name from member
+		<select id="memberList" parameterType="map" resultType="map">
+			select mem_id,mem_name from member
 		</select>
+			
+		<insert id="memberAdd" parameterType="map" >
+		 	insert into member (mem_id, mem_pw, mem_name) values (#{mem_id}, #{mem_pw}, #{mem_name})
+		</insert>
+		
 		
 </mapper>
