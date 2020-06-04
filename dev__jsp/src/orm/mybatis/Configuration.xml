@@ -31,6 +31,7 @@
 		<mapper resource="orm/mybatis/mapper/dept.xml" />
 		<mapper resource="orm/mybatis/mapper/book.xml" />
 		<mapper resource="orm/mybatis/mapper/member.xml" />
+		<mapper resource="orm/mybatis/mapper/board.xml" />
 		<mapper resource="orm/mybatis/mapper/common.xml" />
 	</mappers>
 </configuration>

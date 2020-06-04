@@ -23,11 +23,11 @@ public class FrontMVC2 extends HttpServlet {
 	{
 		logger.info("doService 호출 성공");
 		//insert here
-		//  ==> dev_jsp/member/memberList.mvc2
-		String requestURI = req.getRequestURI();
+	
+		String requestURI = req.getRequestURI();	//  ==> dev_jsp/member/memberList.mvc2
 		logger.info("requestURI : "+requestURI);
-		//  ==> dev_jsp
-		String contextPath = req.getContextPath(); 
+		
+		String contextPath = req.getContextPath(); //  ==> dev_jsp
 		logger.info("contextPath : "+contextPath);
 		// ==> /member/memberList.mvc2	
 		String command = 
