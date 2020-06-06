@@ -15,7 +15,7 @@
 				<property name="driver"
 					value="oracle.jdbc.driver.OracleDriver" />
 				<property name="url"
-					value="jdbc:oracle:thin:@192.168.0.7:1521:orcl11" />
+					value="jdbc:oracle:thin:@192.168.0.11:1521:orcl11" />
 				<property name="username" value="${username}" />
 				<property name="password" value="${password}" />
 			</dataSource>
@@ -33,5 +33,6 @@
 		<mapper resource="orm/mybatis/mapper/member.xml" />
 		<mapper resource="orm/mybatis/mapper/board.xml" />
 		<mapper resource="orm/mybatis/mapper/common.xml" />
+		<mapper resource="orm/mybatis/mapper/test.xml" />
 	</mappers>
 </configuration>

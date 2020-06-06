@@ -28,7 +28,7 @@ public class ModelAndView {
 		this.res = res;
 	}
 	//member/memberList.jsp.jsp
-	public void setViewName(String viewName) {
+	public void setViewName(String viewName) { 
 		this.viewName = viewName;
 		//this.viewName = req.getContextPath()+"/WEB-INF/view/"+viewName+".jsp";
 	}

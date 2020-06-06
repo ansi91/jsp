@@ -5,8 +5,6 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<!-- 공통코드 영역 (화면 공통 코드, 인증처리)  -->
-<%@include file="../common/jEasyUICommon.jsp" %>
 </head>
 <body>
 

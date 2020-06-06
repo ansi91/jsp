@@ -25,6 +25,9 @@ public class ControllerMapper3 {
 			}else if ("board".equals(work)){
 				logger.info("board = " + work);
 				controller = new BoardController(requestName);
+			}else if ("test".equals(work)){
+				logger.info("test = " + work);
+				controller = new TestController(requestName);
 			}
 				
 			}

@@ -1,12 +1,13 @@
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
-<body>
-
-</body>
-</html>
+<%@ page import="com.google.gson.Gson"%>
+<%
+	List<Map<String,Object>> list = (List<Map<String,Object>>)request.getAttribute("boardList");
+	Gson g = new Gson();
+	String temp =	g.toJson(list);
+	out.print(temp);
+	
+	
+%>
