@@ -10,13 +10,16 @@
 <%@include file="../common/jEasyUICommon.jsp" %>
 <script type="text/javascript">
 	 function selectDept(){
-		 
+		 $('#t').datagrid({
+			 url:'jsonDeptList.jsp'
+			 
+		 });
 	 }
 </script>
 </head>
 <body>
 <button onclick="selectDept()">조회</button>
-<table class="easyui-datagrid" title="부서목록" url="jsonDeptList.jsp">
+<table id="t" class="easyui-datagrid" title="부서목록" >
 </table>
 </body>
 </html>

@@ -26,9 +26,29 @@ public class BoardMDao {
 		return bList;
 	}
 
+	public int getBmGroup(Map<String, Object> pMap) {
+		logger.info("getBmGroup 호출 성공");
+		int bm_group=0;
+		//bList라는 변수에 sqlSes의selectList라는 메소드를 실행하는데 매개변수(인자)로 스트링형인 "boardList" 와 Map형인 pMap을 넣는다.
+		bm_group = sqlSes.selectOne("getBmGroup",pMap);
+		logger.info("bm_group:"+bm_group);
+		return bm_group;
+	}
+	
+	public int getBmNo(Map<String, Object> pMap) {
+		logger.info("getBmGroup 호출 성공");
+		int bm_no=0;
+		//bList라는 변수에 sqlSes의selectList라는 메소드를 실행하는데 매개변수(인자)로 스트링형인 "boardList" 와 Map형인 pMap을 넣는다.
+		bm_no = sqlSes.selectOne("getBmNo",pMap);
+		logger.info("bm_no:"+bm_no);
+		return bm_no;
+	}
+	
 	public int boardMINS(Map<String, Object> pMap) {
 		logger.info("boardMINS 호출 성공");
-		return 0;
+		int result=0;
+		result = sqlSes.insert("boardMINS",pMap);
+		return result;
 	}
 
 	public int boardUPD(Map<String, Object> pMap) {

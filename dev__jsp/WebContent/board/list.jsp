@@ -4,7 +4,8 @@
     pageEncoding="UTF-8"%>
     <%
     	//자바영역 - 서버에서 처리된 결과가 html코드에 합쳐져서 클라이언트 측으로 다운로드 되는 것임
-    	// 이미 모든 값이 결정된 상태임 - 변경불가함. -정적임
+    	// 이미 모든 값이 결정된 상태임 - 변경불가함. -정적임 
+    	// list.jsp는 n건이지만 read.jsp는 상세보기니까 1건
     	List<Map<String,Object>> boardList = (List<Map<String,Object>>)request.getAttribute("boardList");
     %>
 <!DOCTYPE html>
@@ -16,6 +17,14 @@
 <%@include file="../common/jEasyUICommon.jsp"%>
 
 <script type="text/javascript">
+
+		function board_ins(){
+			$('#f_ins').attr('method','get');
+			$('#f_ins').attr('action','./boardINS.mvc3');
+			$('#f_ins').submit();
+		}
+
+
 	function writeForm(){
 		$('#f_write').dialog({
 		    width: 600,
@@ -29,6 +38,10 @@
 	
 	function boardList(){
 		location.href="/board/boardList.mvc3?cud=SEL";
+	/* 	$.ajax({
+			url:"/board/boardList.mvc3?cud=SEL"
+			list.jsp->writeForm.jsp-> insert한다 (새글일때, 댓글일때);
+		}); */
 	}
 </script>
 </head>

@@ -13,7 +13,7 @@ public class DBConnectionMgr {
 	public static final String _DRIVER = "oracle.jdbc.driver.OracleDriver";
 		
 	//물리적으로 떨어져 있는 오라클 서버에 URL정보 추가
-	public static final String _URL = "jdbc:oracle:thin:@192.168.0.7:1521:orcl11";
+	public static final String _URL = "jdbc:oracle:thin:@192.168.0.11:1521:orcl11";
 		
 	public static String _USER = "scott";
 	public static String _PW = "tiger";	

@@ -14,6 +14,7 @@ public class TestController implements Controller2020 {
 Logger logger = Logger.getLogger(TestController.class);
 	String requestName= null;
 	TestLogic tLogic = null;
+	
 	public TestController(String requestName) {
 		this.requestName = requestName;
 		tLogic = new TestLogic();
