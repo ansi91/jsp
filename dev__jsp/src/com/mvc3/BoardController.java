@@ -35,14 +35,31 @@ public class BoardController implements Controller2020 {
 			mList = bLogic.boardList(pMap);
 			req.setAttribute("boardList", mList);
 			path = "forward:list.jsp";//pageMove[]
+			
+		}else if("boardDetail".equals(requestName)) {
+			List<Map<String,Object>> mList = null;
+			Map<String,Object> pMap = new HashMap<>();
+			pMap.put("bm_no",req.getParameter("bm_no"));
+			mList = bLogic.boardList(pMap);
+			//mList = bLogic.proc_boardList(pMap);
+			req.setAttribute("boardDetail", mList);
+			path = "forward:read.jsp";//pageMove[]
+			
 		}
+		
 		//너 입력하려구?
 		else if("boardINS".equals(requestName)) {
 			int result =0;
 			Map<String,Object> pMap = new HashMap<>();
-			pMap.put("bm_title",req.getParameter("bm_title"));
-			pMap.put("bm_email",req.getParameter("bm_email"));
-			pMap.put("bm_content",req.getParameter("bm_content"));
+			pMap.put("bm_no", req.getParameter("bm_no"));
+			pMap.put("bm_group", req.getParameter("bm_group"));
+			pMap.put("bm_pos", req.getParameter("bm_pos"));
+			pMap.put("bm_step", req.getParameter("bm_step"));
+			pMap.put("bm_pw", req.getParameter("bm_pw"));
+			pMap.put("bm_title", req.getParameter("bm_title"));
+			pMap.put("bm_writer", req.getParameter("bm_writer"));
+			pMap.put("bm_email", req.getParameter("bm_email"));
+			pMap.put("bm_content", req.getParameter("bm_content"));
 			result = bLogic.boardINS(pMap);
 			if(result==1) path="redirect:boardInsOk.jsp";
 			else if(result ==0) path="redirect:boardInsFail.jsp";
@@ -59,9 +76,19 @@ public class BoardController implements Controller2020 {
 		else if("boardDEL".equals(requestName)) {
 			int result =0;
 			Map<String,Object> pMap = new HashMap<>();
+			pMap.put("bm_no",req.getParameter("bm_no"));
 			result = bLogic.boardDEL(pMap);
-			if(result==1) path="redirect:boardDelOk.jsp";
+			
+			if(result==1) path="redirect:boardDelOK.jsp";
 			else if(result ==0) path="redirect:boardDelFail.jsp";			
+		}else if("updateView".equals(requestName)) {
+			List<Map<String,Object>> mList = null;
+			Map<String,Object> pMap = new HashMap<>();
+			pMap.put("bm_no",req.getParameter("bm_no"));
+			mList = bLogic.boardList(pMap);
+			//mList = bLogic.proc_boardList(pMap);
+			req.setAttribute("boardDetail", mList);
+			path = "forward:read.jsp";//pageMove[]		
 		}
 		
 		return path;

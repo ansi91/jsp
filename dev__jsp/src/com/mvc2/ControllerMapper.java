@@ -21,6 +21,8 @@ public class ControllerMapper {
 			
 				controller = new MemberController(crud);
 				
+			}else if("dept".equals(work)) {
+				controller = new DeptControler(crud);
 			}
 		}
 		return controller;

@@ -38,7 +38,7 @@ Logger logger = Logger.getLogger(TestController.class);
 		pMap.put("abcd", abcd);
 		String text = tLogic.tSelect(pMap);
 		mav.addObject("text", text);
-		mav.setViewName("/test/c.jsp");
+		mav.setViewName("/test/b.jsp");
 		
 		return mav;
 	}

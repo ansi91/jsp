@@ -1,16 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-    
-    <% String result = null;
-    
-    if(request.getAttribute("text")!=null){
-    	result = (String)request.getAttribute("text");
-    }
-    %>
-<%@include file="../common/jEasyUICommon.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
+<%@include file="../common/jEasyUICommon.jsp" %>
 <meta charset="UTF-8">
 <title>Insert title here</title>
 </head>
@@ -19,15 +12,13 @@
     <thead>
         <tr>
             <th data-options="field:'code'">Code</th>
+            <th data-options="field:'name'">Name</th>
+            <th data-options="field:'price'">Price</th>
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td><%=result%></td>
-        </tr>
+        
     </tbody>
 </table>
-
-
 </body>
 </html>

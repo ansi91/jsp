@@ -71,6 +71,7 @@ public class ActionSupport extends HttpServlet {
 					pageMove = new String[2];
 					pageMove[0] = "forward";
 					pageMove[1] = mav.getViewName();
+					
 				}
 			} catch (Exception e) {
 				e.printStackTrace();
