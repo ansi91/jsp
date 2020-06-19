@@ -1,6 +1,8 @@
 package com.mvc3;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,26 +12,23 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
-import com.mvc2.Controller;
-import com.mvc2.ControllerMapper;
+//import com.util.HashMapBinder;
 
-public class ActionSupport extends HttpServlet {
-	Logger logger = Logger.getLogger(ActionSupport.class);
-	public void doService(HttpServletRequest req
-            , HttpServletResponse res)
-    throws ServletException, IOException
-	{
-		String requestURI = req.getRequestURI();
+public class FrontServlet extends HttpServlet {
+	Logger logger = Logger.getLogger(FrontServlet.class);
+	public void doService(HttpServletRequest req, HttpServletResponse res) throws ServletException,IOException{
+		
+		String requestURI = req.getRequestURI();// ==> /member/memberList.mvc2	
 		logger.info("requestURI : "+requestURI);
-		//  ==> dev_jsp
-		String contextPath = req.getContextPath(); 
+
+		String contextPath = req.getContextPath(); 		// " "   ==> dev_jsp
 		logger.info("contextPath : "+contextPath);
-		// ==> /member/memberList.mvc2	
-		String command = 
-				requestURI.substring(contextPath.length()+1);
-		// ==> member/memberList.mvc2	
-		logger.info("before command : "+command);
-		int end = command.lastIndexOf(".");
+		
+		String command = requestURI.substring(contextPath.length()+1);
+	
+		logger.info("before command : "+command);	// ==> member/memberList.mvc2	
+		int end = command.lastIndexOf("."); 
+		System.out.println("[end]"+end);
 		String requestName = null;
 		requestName = command.substring(0,end);
 		logger.info("requestName: "+requestName);
@@ -38,10 +37,14 @@ public class ActionSupport extends HttpServlet {
 		logger.info("aftter command : "+requestName); 
 		//insert here - 인스턴스화 and process call
 		String cud = req.getParameter("cud");
-		logger.info("cud: "+cud);
+		Map<String,Object> cudMap = new HashMap<>();
+		HashMapBinder hmb = new HashMapBinder(req);
+		hmb.multiBind(cudMap);
+		logger.info("cud::::" +cudMap.get("cud"));
+		
 		try {
-			controller = 
-					ControllerMapper3.getController(requestName);
+			controller = ControllerMapper3.getController(requestName);
+				
 ;		} catch (Exception e) {
 			// TODO: handle exception
 		}	
@@ -70,14 +73,17 @@ public class ActionSupport extends HttpServlet {
 					pageMove = new String[2];
 					pageMove[0] = "forward";
 					pageMove[1] = mav.getViewName();
+					
 				}
 			} catch (Exception e) {
+				e.printStackTrace();
 				logger.info("Exception : "+e.toString());
 			}
 			//insert here - redirect인 경우와 forward인 경우를 쪼개기
 			//힌트 : return "redirect:/member/memberList.mvc3
 			if(pageMove !=null) {
 				String path =pageMove[1];
+				logger.info("path : " + path);
 				if("redirect".equals(pageMove[0])) {//너 redirect 할거야?
 					res.sendRedirect(path);
 				}
@@ -92,19 +98,8 @@ public class ActionSupport extends HttpServlet {
 				}
 			}
 		}//////////////////////end of Controller가 널이 아닐때
-	}/////////////////////////end of doService/////////////////////////
-	public void doGet(HttpServletRequest req
-			, HttpServletResponse res)
-					throws ServletException, IOException
-	{
-		logger.info("doGet 호출 성공");
-		doService(req,res);
-	}
-	public void Post(HttpServletRequest req
-			, HttpServletResponse res)
-					throws ServletException, IOException
-	{
-		logger.info("doPost 호출 성공");
-		doService(req,res);
+	}///////
+	public void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
 	}
 }

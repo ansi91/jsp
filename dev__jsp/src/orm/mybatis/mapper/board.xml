@@ -20,6 +20,13 @@
 		 </if>
 		 ORDER BY bm.bm_group desc, bm_step asc	
 	</select>
+	
+	<select id="getTotal" parameterType="map" resultType="int">
+		SELECT count(bm.bm_no)
+          FROM board_master_t bm, board_sub_t bs
+         WHERE bm.bm_no = bs.bm_no(+)
+	</select>
+	
 	<insert id="boardMINS" parameterType="map">
 		INSERT INTO board_master_t(bm_no, bm_title, bm_writer
 		                                                 , bm_email, bm_content
@@ -46,7 +53,12 @@
 		                                           
 	</insert>
 	<insert id="boardSINS" parameterType="map">
-		INSERT INTO board_sub_t(bm_no) VALUES(#{bm_no}) 
+		INSERT INTO board_sub_t(bs_no,bs_seq,bs_size,bs_file) VALUES(
+																										 #{bm_no}
+																										 ,#{bm_seq}
+																										 ,#{bm_size}
+																										 ,#{bm_file}					
+																										 					) 
 	</insert>
 	
 	<update id="bmStepUpdate" parameterType="map">
@@ -86,6 +98,11 @@
                             ),0)+1 bm_no
   	       FROM dual
 	</select>
+	
+	<select id="deptList" parameterType="map" resultType="map">
+		SELECT 
+	</select>
+	
 </mapper> 
 
 

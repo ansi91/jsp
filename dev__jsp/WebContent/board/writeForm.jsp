@@ -25,7 +25,7 @@
 <!-- 새글 일때[list.jsp->글쓰기버튼을 누르면] 
 새글과 댓글은 어떻게 구분하나요?
 -->
-<form id="f_write">
+<form id="f_write" method="post" enctype="multipart/form-data">
 <input type="hidden" name="cud" value="INS">
 
     <table align="center" id="p" class="easyui-panel" title="글상세보기" data-options="footer:'#tb_read'"

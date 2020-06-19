@@ -74,7 +74,7 @@ public class BoardLogic {
 				}
 			}
 			//첨부파일이 있을까요?
-			if(pMap.get("bs_file")!=null) {
+			if(pMap.get("bs_file")!=null && pMap.get("bs_file").toString().length()>=1) {
 				logger.info("첨부파일이 있는 경우");
 				int sresult = 0;
 				sresult = bsDao.boardSINS(pMap);
@@ -82,8 +82,12 @@ public class BoardLogic {
 			//데이터 유효성 체크 코드 추가. XML문서 분석하기
 			//크루는 PL로 부터 소스를 받으면 제일 먼저 단위테스트를 수행
 			//주의사항:테이블 컬럼을 사용자로 부터 입력받는 값과 개발자끼리만 공유하는 값
+			logger.info("bs_seq===>"+pMap.get("bs_seq"));
+			logger.info("bs_file===>"+pMap.get("bs_file"));
+			logger.info("bs_size===>"+pMap.get("bm_size"));
 			logger.info("bm_no===>"+pMap.get("bm_no"));
 			logger.info("bm_group===>"+pMap.get("bm_group"));
+			logger.info("bm_pos===>"+pMap.get("bm_pos"));
 			logger.info("bm_title===>"+pMap.get("bm_title"));
 			logger.info("bm_writer===>"+pMap.get("bm_writer"));
 			logger.info("bm_content===>"+pMap.get("bm_content"));

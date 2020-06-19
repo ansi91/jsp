@@ -9,7 +9,17 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.log4j.Logger;
 
 import com.mvc2.MyBatisCommonFactory;
-
+/*******************************
+ *          
+ * jsp -> request.setAttribute()       request.getAttribute()
+ *          내장객체
+ *          
+ * servlet  -> req,res                   ActionSupport(req,res)
+ * 							
+ * 				Controller2020				
+ * 						↑
+ *          	BoardController
+ ********************************/
 
 public class BoardMDao {
 	Logger logger = Logger.getLogger(BoardMDao.class);
@@ -26,6 +36,17 @@ public class BoardMDao {
 		logger.info("bList:"+bList.size());
 		return bList;
 	}
+	
+	
+	
+	public int getTotal(Map<String, Object> pMap) {
+		logger.info("getTotal 호출 성공");
+		int tot = 0;
+		tot = sqlSes.selectOne("getTotal",pMap);
+		logger.info("tot:"+ tot);
+		return tot;
+	}
+	
 	public  List proc_boardList(Map<String, Object> pMap) {
 		logger.info("boardList 호출 성공");
 		List<Map<String,Object>> bList = null;

@@ -1,5 +1,40 @@
+<%@page import="java.util.HashMap"%>
+<%@page import="java.util.Map"%>
+<%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+    <%
+    List<Map<String,Object>> boardList = 
+	(List<Map<String,Object>>)request.getAttribute("boardDetail");
+Map<String,Object> rmap = null;
+if(boardList!=null){
+rmap = boardList.get(0);	
+}
+String rbm_no = null;
+String rbm_title = null;
+String rbm_writer = null;
+String rbm_email = null;
+String rbm_content = null;
+String rbm_group = null;
+String rbm_pos = null;
+String rbm_step = null;
+String rbm_pw = null;
+String rbs_seq = null;
+String rbs_file = null;
+if(rmap !=null){
+rbm_no = rmap.get("BM_NO").toString();
+rbm_title = rmap.get("BM_TITLE").toString();
+rbm_writer = rmap.get("BM_WRITER").toString();
+rbm_email = rmap.get("BM_EMAIL").toString();
+rbm_content = rmap.get("BM_CONTENT").toString();
+rbm_group = rmap.get("BM_GROUP").toString();
+rbm_pos = rmap.get("BM_POS").toString();
+rbm_step = rmap.get("BM_STEP").toString();
+rbm_pw = rmap.get("BM_PW").toString();
+
+}
+%>
+    
 <!DOCTYPE html>
 <html>
 <head>
@@ -94,6 +129,7 @@
       
     </ul>
     <form class="form-inline" action="/action_page.php">
+    <input type="file"/>
     <label for="email2" class="mb-2 mr-sm-2"><p class="text-dark">ID:</p></label>
     <input type="text" class="form-control mb-2 mr-sm-2" id="email2" placeholder="Enter ID" name="email">
     <label for="pwd2" class="mb-2 mr-sm-2" ><p class="text-dark">PASSWORD:</p></label>
@@ -118,7 +154,7 @@ google.setOnLoadCallback(drawChart);
 function drawChart() 
 {
     var data = google.visualization.arrayToDataTable(
-        [["판매현황","Rating"],["담배",25],["마스크",56],["샴푸",37],["고기",71],["커피",11],["초콜릿",49]]
+        [["판매현황","Rating"],["<%=rbm_title%>",25],["마스크",56],["샴푸",37],["고기",71],["커피",11],["초콜릿",49]]
     );
     var options = {
         title: "판매현황"

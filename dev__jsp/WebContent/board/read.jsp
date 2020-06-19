@@ -40,6 +40,23 @@
 <!-- 공통 코드 include처리 -->
 <%@include file="../common/jEasyUICommon.jsp" %>
 <script type="text/javascript">
+	function boardUpd(){
+		$("#uf_board").attr("method","get");
+		$("#uf_board").attr("action","./boardUPD.mvc3");
+		$("#uf_board").submit();		
+	}
+	function updateForm(){
+		alert("updateForm 호출 성공");
+		$('#d_boardUpd').dialog({
+			title:'글수정'
+		  ,width:720
+		  ,height:450
+		  ,closed:false
+		  ,cache:false
+		 ,modal:true	  
+		});
+		$('#d_boardUpd').dialog('open');		
+	}
 	function repleForm(){
 		$("#dlg_boardAdd").dialog('open');
 	}
@@ -76,34 +93,17 @@
 		  ,height:250
 		  ,closed:true
 		  ,cache:false
-		  ,href:'boardDelForrm.jsp?bm_no<%=rbm_no%>&bm_pw=<%=rbm_pw%>'
+		  ,href:'boardDelForm.jsp?bm_no<%=rbm_no%>&bm_pw=<%=rbm_pw%>'
 		 ,modal:true	  
 		});
 		$('#d_boardDel').dialog('open');
 	}
-	//updateView
-	function updateForm(){
-		alert("boardUpd 호출 성공");
-		$('#d_boardUpd').dialog({
-			title:'글 수정'
-		  ,buttons:btn_boardUpd
-		  ,width:700
-		  ,height:600
-		  ,closed:true
-		  ,cache:false
-		  ,href:'boardUpdForm.jsp?bm_title=<%=rbm_title%>'
-		 ,modal:true	  
-		});
-		$('#d_boardUpd').dialog('open');
-		
-	}
-	
 </script>
 </head>
 <body>
 <script type="text/javascript">
 	$(document).ready(function(){
-
+		
 	});
 </script>
     <table align="center" id="p" class="easyui-panel" title="글상세보기" data-options="footer:'#tb_read'"
@@ -145,6 +145,46 @@
 		<!-- 글삭제  끝   -->
 		<!-- 글수정 시작 -->
 		<div id="d_boardUpd" closed="true" class="easyui-dialog" style="padding:20px 50px">
+<!--================  ===================-->			
+
+<form id="uf_board" method="get">
+<input type="hidden" name="cud" value="UPD">
+<input type="hidden" id="bm_no" name="bm_no" value="<%=rbm_no %>">
+<table align="center" width="650px" height="280px">
+	<tr>
+		<td width="120px">글제목</td>
+		<td width="580px">
+			<input id="ubm_title" name="bm_title" value="<%=rbm_title %>" class="easyui-textbox">
+		</td>
+	</tr>
+	<tr>
+		<td width="120px">작성자</td>
+		<td width="580px">
+			<input id="ubm_writer"  name="bm_writer"  value="<%=rbm_writer %>" class="easyui-textbox">
+		</td>
+	</tr>	
+	<tr>
+		<td width="120px">내용</td>
+		<td width="580px">
+			<input id="ubm_content" multiline="true"  value="<%=rbm_content %>" name="bm_content" class="easyui-textbox" style="width:100%;height:100px">
+		</td>
+	</tr>	
+	<tr>
+		<td width="120px">첨부파일</td>
+		<td width="580px">
+			<input id="bs_file" name="bm_file" class="easyui-filebox" style="width:100%">
+		</td>
+	</tr>	
+	<tr>
+		<td width="120px">비번</td>
+		<td width="580px">
+			<input id="ubm_pw" name="bm_pw" class="easyui-textbox" style="width:100px">
+		</td>
+	</tr>	
+</table>
+</form>
+
+<!--================  ===================-->			
 			<div id="btn_boardUpd" align="right">
 			<a href="javascript:boardUpd()" class="easyui-linkbutton" iconCls="icon-ok" style="width:90px">등록</a>
 			<a href="javascript:boardUpdClose()" class="easyui-linkbutton" iconCls="icon-cancel" style="width:90px">닫기</a>

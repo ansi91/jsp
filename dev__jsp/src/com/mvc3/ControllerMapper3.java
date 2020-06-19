@@ -28,6 +28,8 @@ public class ControllerMapper3 {
 			}else if ("test".equals(work)){
 				logger.info("test = " + work);
 				controller = new TestController(requestName);
+			}else if ("dept".equals(work)) {
+				controller = new DeptContoller(requestName);
 			}
 				
 			}

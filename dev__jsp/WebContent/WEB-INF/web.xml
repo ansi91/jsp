@@ -33,12 +33,24 @@
  
  <servlet>
  	<servlet-name>loginServlet</servlet-name>
- 	<servlet-class>jsp.ch10.LoginServlet</servlet-class>
+ 	<servlet-class>jsp.ch10.LoginServle</servlet-class>
  </servlet>
  <servlet-mapping>
  	<servlet-name>loginServlet</servlet-name>
  	<url-pattern>/ch10/login.do</url-pattern>
  </servlet-mapping>
+ 
+  <servlet>
+ 	<servlet-name>deptServlet</servlet-name>
+ 	<servlet-class>com.mvc3.ActionSupport</servlet-class>
+ </servlet>
+ <servlet-mapping>
+ 	<servlet-name>deptServlet</servlet-name>
+ 	<url-pattern>*.dept</url-pattern>
+ </servlet-mapping>
+ 
+ 
+ 
  <servlet>
  	<servlet-name>frontServlet</servlet-name>
  	<servlet-class>jsp.ch17.FrontServlet</servlet-class>

@@ -8,6 +8,7 @@ import java.util.Map;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
@@ -15,9 +16,13 @@ public class BoardController implements Controller2020 {
 	Logger logger = Logger.getLogger(BoardController.class);
 	String requestName = null;
 	BoardLogic bLogic = null;
+	int tot=0;
 	public BoardController(String requestName) {
 		this.requestName = requestName;//유지|공유
 		bLogic = new BoardLogic();
+		BoardMDao bmDao = new BoardMDao();
+		Map<String,Object> pMap = new HashMap<>();
+		tot =  bmDao.getTotal(pMap);
 	}
 	/*************************************************************
 	 * @param ActionSupport에서 넘겨 준 주소번지를 사용함.
@@ -26,7 +31,10 @@ public class BoardController implements Controller2020 {
 	 ************************************************************/
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
 		logger.info("process:String 호출 성공");
+		HttpSession session = req.getSession();
+		session.setAttribute("s_tot", tot);
 		String path = null;
 		//너 조회버튼 누른거야?
 		if("boardList".equals(requestName)) {

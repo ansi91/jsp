@@ -6,15 +6,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
-/* 	DeptDao dDao = new DeptDao();
+	/*DeptDao dDao = new DeptDao();
 	Map<String,Object> dmap = new HashMap<>();
 	String deptno= request.getParameter("deptno");
 	dmap.put("deptno",deptno);
-	List<Map<String,Object>> deptList = dDao.deptList(dmap);
-	 */
-	List<Map<String,Object>> deptList = (List<Map<String,Object>>)request.getAttribute("deptList"); //forward ->servlet 
+	List<Map<String,Object>> deptList = dDao.deptList(dmap);*/
+	 
+ 	List<Map<String,Object>> deptList = (List<Map<String,Object>>)request.getAttribute("deptList"); //forward ->servlet 
 	Gson g = new Gson();
 	String imsi = g.toJson(deptList);
-	out.print(imsi); //json포맷
+	out.print(imsi); //json포맷 
 
 %>

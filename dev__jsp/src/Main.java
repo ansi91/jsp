@@ -9,7 +9,7 @@ public class Main {
 		String controller = url.substring(context.length() + 1, url.lastIndexOf('/'));
 		String method = url.substring(url.lastIndexOf('/') + 1, url.lastIndexOf('.'));
 		System.out.println(controller);
-		System.out.println(method);
+		//System.out.println(method);
 		
 		String uri = url2.substring(url3.length()+1);
 		System.out.println("uri:::::::::::::"+ uri);
